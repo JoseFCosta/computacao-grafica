@@ -69,15 +69,39 @@ function ShowComponents() {
 
       <FormComponent
         title="Informações do Usuário"
-  inputs={[
-    { label: "Nome", placeholder: "Produto A", resCol: 15, onChange: () => {} },
-    { label: "Categoria", placeholder: "Ex: Bebida", resCol: 15, onChange: () => {} },
-    { label: "Quantidade", placeholder: "0", resCol: 10, onChange: () => {} },
-    { label: "Preço", placeholder: "R$ 0,00", resCol: 10, onChange: () => {} },
-    { label: "SKU", placeholder: "Código", resCol: 10, onChange: () => {} },
-  ]}
+        inputs={[
+          {
+            label: "Nome",
+            placeholder: "Produto A",
+            resCol: 15,
+            onChange: () => {},
+          },
+          {
+            label: "Categoria",
+            placeholder: "Ex: Bebida",
+            resCol: 15,
+            onChange: () => {},
+          },
+          {
+            label: "Quantidade",
+            placeholder: "0",
+            resCol: 10,
+            onChange: () => {},
+          },
+          {
+            label: "Preço",
+            placeholder: "R$ 0,00",
+            resCol: 10,
+            onChange: () => {},
+          },
+          {
+            label: "SKU",
+            placeholder: "Código",
+            resCol: 10,
+            onChange: () => {},
+          },
+        ]}
       />
-
       <br />
       <br />
       <br />
