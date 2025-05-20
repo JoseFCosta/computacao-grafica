@@ -1,0 +1,155 @@
+.Button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #4E664A;
+  font-size: 1.125rem;
+    width: 18.7rem;
+    height:2.75rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.3125rem;    
+
+    cursor: pointer;
+  }
+  
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  font-size: 1.5625rem;  
+  margin-bottom: 0.3125rem;
+  font-weight: 600;
+  color: #4E664A;
+}
+
+.input{
+  font-weight: 600;
+  padding: 0.3125rem;
+  font-size: 1.125rem;
+  border: 0.125rem solid #4E664A;
+  border-radius: 0.25rem;
+  outline: none;
+  width: 18.7rem;
+  height:1.75rem;
+}
+
+.input::placeholder {
+  color: #6C6C6C;
+}
+
+.input-checkbox-container {
+  display: flex;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: #4E664A;
+}
+
+.input-checkbox {  
+  accent-color: #4E664A;
+  width: 1.125rem;
+  height: 1.125rem;
+
+}
+
+.checkbox-label{
+  font-weight: 500;
+  font-size: 1rem;
+  padding-left: 0.625rem;
+}
+
+.card {
+  display: block;
+  border: 0.1875rem solid #4E664A;
+  border-radius: 0.3125rem;
+  width: 18.75rem;
+}
+
+.card-image {
+  width: 100%;
+  height: 15.625rem;
+  display: block;
+}
+
+.card-address, .card-info{
+  color: #4E664A;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-top: 0.125rem solid #4E664A;
+  padding: 0.3125rem 0;
+}
+
+
+
+.expandable-form {
+  border: 1px solid #4E664A;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.expandable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4E664A;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #4E664A;
+}
+
+.separator {
+  margin-top: 8px;
+  height: 2px;
+  background-color: #4E664A;
+}
+
+.expandable-content {
+  margin-top: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  box-sizing: border-box;
+}
+
+.form-grid-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.form-component-input-label {
+  font-weight: 500;
+  font-size: 18px;
+  color: #4E664A;
+  margin-bottom: 5px;
+  margin-inline: 6px;
+}
+
+.form-component-input {
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid #4E664A;
+  border-radius: 4px;
+  margin-inline: 6px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  
+  outline: none;
+}
