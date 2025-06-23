@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { Button } from "./components/Button";
-import { Input } from "./Components/Input";
-import { InputDropDown } from "./components/InputDropDown";
-import { Card } from "./components/Card";
-import { FormComponent } from "./Components/FormComponent";
+
+import {
+  Button,
+  Input,
+  InputDropDown,
+  Card,
+  FormComponent,
+  ButtonCancel,
+  DateInput,
+} from "./Components/index";
 
 function ShowComponents() {
   const [inputValue, setInputValue] = useState("");
@@ -21,12 +26,20 @@ function ShowComponents() {
     setDropdownValue(e.target.value);
   };
 
+  const handleDateChange = (newDate) => {
+    setDate(newDate);
+  };
+
   return (
     <div>
       <h1>ShowComponents</h1>
       <br />
       {/* Button Component */}
       <Button onClick={handleButtonClick}>Entrar</Button>
+      <br />
+      <br />
+      {/* Button Component */}
+      <ButtonCancel onClick={handleButtonClick}>Sair</ButtonCancel>
       <br />
       <br />
       <br />
@@ -105,6 +118,9 @@ function ShowComponents() {
       <br />
       <br />
       <br />
+
+      {/* Data Input*/}
+      <DateInput/>
     </div>
   );
 }

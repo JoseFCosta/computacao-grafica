@@ -1,6 +1,6 @@
 import "./components.css";
 
-export const Input = ({
+const Input = ({
   placeholder,
   onChange,
   label,
@@ -11,7 +11,7 @@ export const Input = ({
   return (
     <div className="input-container">
       {label && <label className="input-label">{label}</label>}
-      
+
       <input
         className="input"
         type="text"
@@ -32,3 +32,4 @@ export const Input = ({
     </div>
   );
 };
+export default Input;

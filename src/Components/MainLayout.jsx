@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import "./components.css";
 
 const menuItems = [
@@ -13,9 +13,10 @@ const menuItems = [
   { label: "Componentes", path: "/Components" },
 ];
 
-const siteTitle = "Meu Site";
+const title = "Meu Site";
+const username = "Usuário";
 
-export const MainLayout = () => {
+const MainLayout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -26,19 +27,24 @@ export const MainLayout = () => {
 
   return (
     <>
-      <header className="site-header">
+      <header className="header">
         <div className="header-left">
           <div className="hamburger-icon" onClick={() => setIsMenuOpen(true)}>
             ☰
           </div>
-          <span className="site-title">{siteTitle}</span>
+          <Link className="title" to="/">
+            {title}
+          </Link>
         </div>
-        <div className="header-right">Bem-vindo, usuário</div>
+        <div className="header-right">Bem-vindo, {username}</div>
       </header>
 
       {isMenuOpen && (
         <>
-          <div className="menu-overlay" onClick={() => setIsMenuOpen(false)}></div>
+          <div
+            className="menu-overlay"
+            onClick={() => setIsMenuOpen(false)}
+          ></div>
           <div className="side-menu">
             {menuItems.map((item, index) => (
               <div
@@ -59,3 +65,5 @@ export const MainLayout = () => {
     </>
   );
 };
+
+export default MainLayout;

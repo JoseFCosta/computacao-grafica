@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./components.css";
 
-export const FormComponent = ({ title, inputs = [] }) => {
+const FormComponent = ({ title, inputs = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -46,3 +46,6 @@ export const FormComponent = ({ title, inputs = [] }) => {
     </div>
   );
 };
+
+
+export default FormComponent;

@@ -1,4 +1,4 @@
-export const Card = ({
+const Card = ({
   title,
   imageUrl,
   address,
@@ -18,3 +18,5 @@ export const Card = ({
     </div>
   );
 };
+
+export default Card;

@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { MainLayout } from "./Components/MainLayout";
+import { MainLayout, LoginLayout } from "./Components";
 import Login from "./Login";
 import HomePage from "./HomePage";
 import ShowComponents from "./ShowComponents";
@@ -15,9 +15,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
-
+          <Route element={<LoginLayout />}>
             <Route path="/Login" element={<Login />} />
 
             <Route path="/RegisterUser" element={<RegisterUser />} />
@@ -27,6 +25,9 @@ function App() {
               path="/RegisterEmployeeForm"
               element={<RegisterEmployeeForm />}
             />
+          </Route>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
 
             <Route path="/RegisterTravel" element={<RegisterTravel />} />
 

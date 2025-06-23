@@ -1,5 +1,6 @@
 function RegisterEmployeeForm() {
-  return <>RegisterEmployeeForm</>;
+  return( <>RegisterEmployeeForm
+  </>)
 }
 
 export default RegisterEmployeeForm;
