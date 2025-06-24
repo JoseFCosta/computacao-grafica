@@ -1,5 +1,4 @@
 const Card = ({
-  title,
   imageUrl,
   address,
   departureDate,

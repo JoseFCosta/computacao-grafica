@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DateInput, Input, InputDropDown, Card} from "./Components";
+import { DateInput, Input, InputDropDown, Card } from "./Components";
 import { FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ function HomePage() {
       id: 2,
       title: "Viagem para São Paulo",
       imageUrl:
-        "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/capa_guiaSP.jpg",
+        "https://s2-g1.glbimg.com/furKtcGIfEo7Wjb8_0W2wZuRMvM=/0x0:1984x1115/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2022/B/h/yp3yxKSxWb586z6BC7Bw/51720659599-698f56b696-k.jpg",
       address: "São Paulo - SP",
       departureDate: "10/06/2025",
       arrivalDate: "15/06/2025",
@@ -31,7 +31,7 @@ function HomePage() {
       id: 3,
       title: "Viagem para Salvador",
       imageUrl:
-        "https://a.cdn-hotels.com/gdcs/production189/d372/86617b2a-2e3c-4c8e-a190-19e61bdb5225.jpg",
+        "https://vinhedoscuiaba.com.br/blog/wp-content/uploads/2023/07/imagem_capa-1-1.jpg",
       address: "Salvador - BA",
       departureDate: "01/07/2025",
       arrivalDate: "07/07/2025",
@@ -40,8 +40,8 @@ function HomePage() {
       id: 4,
       title: "Viagem para Florianópolis",
       imageUrl:
-        "https://viagemeturismo.abril.com.br/wp-content/uploads/2016/11/ilha-do-campeche-florianopolis-santa-catarina.jpg",
-      address: "Florianópolis - SC",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/V%C3%A1rzea_Grande_MT_panor%C3%A2mica.png/960px-V%C3%A1rzea_Grande_MT_panor%C3%A2mica.png",
+      address: "Gotham City - SC",
       departureDate: "15/08/2025",
       arrivalDate: "20/08/2025",
     },
@@ -49,16 +49,43 @@ function HomePage() {
       id: 5,
       title: "Viagem para Fortaleza",
       imageUrl:
-        "https://media.istockphoto.com/id/1295440364/pt/foto/fortaleza-beach-in-northeast-brazil.jpg",
-      address: "Fortaleza - CE",
+        "https://portalmatogrosso.com.br/wp-content/uploads/2022/07/Aerea-Varzea-Grande-e1710171850871.jpg",
+      address: "Fim do mundo - MT",
       departureDate: "05/09/2025",
       arrivalDate: "10/09/2025",
     },
+    {
+      id: 6,
+      title: "Viagem para Fortaleza",
+      imageUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Trevo_Sinop.jpg/640px-Trevo_Sinop.jpg",
+      address: "Sinop - MT",
+      departureDate: "05/09/2025",
+      arrivalDate: "10/09/2025",
+    },
+    {
+      id: 7,
+      title: "Viagem para Fortaleza",
+      imageUrl:
+        "https://portalmatogrosso.com.br/wp-content/uploads/2022/07/Aerea-Varzea-Grande-e1710171850871.jpg",
+      address: "Europa - CBA",
+      departureDate: "05/09/2025",
+      arrivalDate: "10/09/2025",
+    },  
+    {
+      id: 8,
+      title: "Viagem para Fortaleza",
+      imageUrl:
+        "https://www.midianews.com.br/storage/webdisco/2019/08/09/886x590/d2c874b916e272ab1a12211308997d99.jpg",
+      address: "Washington - D.C",
+      departureDate: "05/09/2025",
+      arrivalDate: "10/09/2025",
+    },  
   ];
 
   const handleCardClick = (trip) => {
-    navigate("/bus", { state: trip });
+    navigate("/RegisterTravel", { state: trip });
   };
+  
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -92,21 +119,19 @@ function HomePage() {
           <DateInput label="Ida..." />
           <DateInput label="Volta..." />
         </div>
-        <div className="card-container">
-          <div className="card-container">
-            {trips.map((trip) => (
-              <Card
-                key={trip.id}
-                title={trip.title}
-                imageUrl={trip.imageUrl}
-                address={trip.address}
-                departureDate={trip.departureDate}
-                arrivalDate={trip.arrivalDate}
-                onClick={() => handleCardClick(trip)}
-              />
-            ))}
-          </div>
-        </div>
+      </div>
+      <div className="card-container">
+        {trips.map((trip) => (
+          <Card
+            key={trip.id}
+            title={trip.title}
+            imageUrl={trip.imageUrl}
+            address={trip.address}
+            departureDate={trip.departureDate}
+            arrivalDate={trip.arrivalDate}
+            onClick={() => handleCardClick(trip)}
+          />
+        ))}
       </div>
     </div>
   );

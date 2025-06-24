@@ -20,7 +20,7 @@
     font-size: 1.125rem;
     width: 18.7rem;
     height:2.75rem;
-  border: 0.125rem solid #4E664A;
+    border: 0.125rem solid #4E664A;
     cursor: pointer;
     border-radius: 0.3125rem;    
     cursor: pointer;
@@ -78,7 +78,7 @@
   display: block;
   border: 0.125rem solid #4E664A;
   border-radius: 0.3125rem;
-   width: 100%;
+  width: 100%;
   max-width: 18.75rem;
 }
 

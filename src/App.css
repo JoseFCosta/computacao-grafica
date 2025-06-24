@@ -4,6 +4,7 @@
   font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
+  color: #4E664A;
 }
 
 .container {
@@ -55,8 +56,7 @@
   display: flex;
   justify-content: center; 
   align-items: center;
-  flex-direction: column;
-      
+  flex-direction: column;  
   padding: 1.25rem;         
   gap: 1.25rem;
 }
@@ -70,11 +70,18 @@
   margin-top: 1.25rem;
 }
 
+.homepage-container{
+  padding-top: 0.3125rem;
+  padding-left: 1.25rem;
+}
+
 .homepage-filter {
   display: flex;
   align-items: center;
   column-gap: 1rem;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
+  padding-left: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .date-group {
@@ -83,15 +90,162 @@
   gap: 1rem;
 }
 
-.homepage-container{
-  padding-top: 0.3125rem;
-  padding-left: 1.25rem;
-}
-
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
+  gap:1.25rem;
 }
 
+@media (max-width: 1200px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Ônibus */
+.bus-container {
+  background-color: #eaeaea;
+  border: 2px solid #4E664A;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Espaço do motorista */
+.driver-space {
+  width: 100%;
+  height: 40px;
+}
+
+/* Linha de assentos */
+.seat-row {
+  display: flex;
+  gap: 12px;
+}
+
+/* Espaçamento maior entre os grupos */
+.row-group-bottom {
+  margin-bottom: 20px;
+}
+
+/* Estilo dos assentos */
+.seat {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #4E664A;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estados dos assentos */
+.seat-free {
+  background-color: transparent;
+}
+
+.seat-occupied {
+  background-color: #4E664A;
+  border: none;
+  cursor: not-allowed;
+}
+
+.seat-selected {
+  background-color: #727272;
+  border: none;
+}
+
+/* Assentos pequenos para legenda */
+.seat.small {
+  width: 20px;
+  height: 20px;
+}
+
+/* Legenda */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4E664A;
+  font-weight: 500;
+}
+
+/* Resumo (contador e preços) */
+.summary {
+  margin-top: 20px;
+  color: #4E664A;
+  font-weight: 600;
+}
+
+.summary p {
+  margin: 8px 0;
+}
+
+.summary span {
+  background-color: #4E664A;
+  color: #FFFFFF;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
+
+/* Footer com os botões */
+.footer-register {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+/* Botões */
+.button-cancel {
+  background-color: transparent;
+  color: #4E664A;
+  border: 2px solid #4E664A;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.button-cancel:hover {
+  background-color: #4E664A;
+  color: #FFFFFF;
+}
+
+.button-confirm {
+  background-color: #4E664A;
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.button-confirm:hover {
+  background-color: #39503a;
+}
