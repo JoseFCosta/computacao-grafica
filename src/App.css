@@ -115,137 +115,133 @@
   }
 }
 
-
-/* Ônibus */
 .bus-container {
-  background-color: #eaeaea;
-  border: 2px solid #4E664A;
+  background-color: #d9d9d9;
+  border: 2px solid #4e664a;
   border-radius: 10px;
-  padding: 20px;
+  margin-top: 20px;
+  margin-inline: 5%;
+  padding: 12px;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
 }
 
-/* Espaço do motorista */
-.driver-space {
-  width: 100%;
-  height: 40px;
+.seat {
+  border: 2px solid #4e664a;
+  border-radius: 5px;
+  padding: 25px;
+  margin-inline: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
 }
 
-/* Linha de assentos */
 .seat-row {
   display: flex;
-  gap: 12px;
+  justify-content: center;
 }
 
-/* Espaçamento maior entre os grupos */
-.row-group-bottom {
-  margin-bottom: 20px;
-}
-
-/* Estilo dos assentos */
-.seat {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #4E664A;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Estados dos assentos */
-.seat-free {
-  background-color: transparent;
+.passenger-area {
+  padding-left: 140px;
 }
 
 .seat-occupied {
-  background-color: #4E664A;
-  border: none;
+  background-color: #727272;
   cursor: not-allowed;
 }
 
 .seat-selected {
-  background-color: #727272;
-  border: none;
+  background-color: #4e664a;
+  border-color: #4e664a;
 }
 
-/* Assentos pequenos para legenda */
-.seat.small {
-  width: 20px;
-  height: 20px;
+.bus-info {
+  text-align: left;
+  margin: 30px 5% 0 5%;
 }
-
-/* Legenda */
-.legend {
+.bus-info-header {
   display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 20px;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
-.legend-item {
+
+.legend-container{
+  text-align: right;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #4E664A;
+}
+
+.legend-item{
+  align-items: center; 
+  display: flex;
   font-weight: 500;
 }
 
-/* Resumo (contador e preços) */
-.summary {
-  margin-top: 20px;
-  color: #4E664A;
-  font-weight: 600;
+.legend-free {
+  margin-right: 10px;
+  border: 2px solid #4e664a;
+  border-radius: 5px;
+  padding: 13px;
 }
 
-.summary p {
-  margin: 8px 0;
+.legend-occupied {
+  margin-inline: 10px;
+  background-color: #727272;
+  border-radius: 5px;
+  padding: 15px;
 }
 
-.summary span {
-  background-color: #4E664A;
-  color: #FFFFFF;
-  padding: 4px 8px;
+.legend-selected {
+  margin-inline: 10px;
+  background-color: #4e664a;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.counter p {
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.counter span {
+  text-align: left;
+}
+
+.counter-value {
+  background-color: #4e664a;
+  color: #ffffff;
+  padding: 4px 10px;
   border-radius: 4px;
   margin-left: 6px;
 }
-
-/* Footer com os botões */
-.footer-register {
+.footer-register-buspage {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.25rem;
 }
 
-/* Botões */
-.button-cancel {
-  background-color: transparent;
-  color: #4E664A;
+.payment-card {
+  margin: 2rem auto;
+  padding: 2rem;
   border: 2px solid #4E664A;
-  padding: 8px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s;
+  border-radius: 0.3125rem;
+  width: 18.75rem;
+  text-align: center;
+  background-color: #f9f9f9;
 }
 
-.button-cancel:hover {
-  background-color: #4E664A;
-  color: #FFFFFF;
+.qrcode-img {
+  width: 12.5rem;
+  height: 12.5rem;
+  margin-bottom: 1rem;
 }
 
-.button-confirm {
-  background-color: #4E664A;
-  color: #FFFFFF;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s;
-}
-
-.button-confirm:hover {
-  background-color: #39503a;
+.total-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4E664A;
 }

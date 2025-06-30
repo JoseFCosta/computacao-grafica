@@ -32,7 +32,7 @@ function App() {
             <Route path="/RegisterTravel" element={<RegisterTravel />} />
 
             <Route
-              path="/Confirmação de pagamento"
+              path="/PaymentConfirm"
               element={<PaymentConfirm />}
             />
 

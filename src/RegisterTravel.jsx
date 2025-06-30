@@ -1,135 +1,124 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Button, ButtonCancel } from "./Components";
 
-function ButtonCancel({ onClick, children }) {
-  return (
-    <button className="button-cancel" onClick={onClick}>
-      {children}
-    </button>
-  );
-}
 
-function Button({ children }) {
-  return <button className="button-confirm">{children}</button>;
-}
 
 function RegisterTravel() {
-  const rowsPerGroup = 2;
-  const seatsPerRow = 5; // quantidade de assentos por linha
-  const totalGroups = 2;
-  const pricePerSeat = 150;
+  const rows = 4;
+  const cols = 10;
+  const seatPrice = 150;
+  const totalSeats = rows * cols;
 
-  const [seats, setSeats] = useState([]);
+  const [occupiedSeats, setOccupiedSeats] = useState(new Set());
+  const [selectedSeats, setSelectedSeats] = useState(new Set());
 
   useEffect(() => {
-    const initialSeats = [];
-    for (let group = 0; group < totalGroups; group++) {
-      for (let row = 0; row < rowsPerGroup; row++) {
-        const rowSeats = [];
-        for (let seat = 0; seat < seatsPerRow; seat++) {
-          const isOccupied = Math.random() < 0.2;
-          rowSeats.push(isOccupied ? "occupied" : "free");
-        }
-        initialSeats.push(rowSeats);
-      }
+    const quantity = Math.floor(Math.random() * 10) + 5;
+    const occupied = new Set();
+
+    while (occupied.size < quantity) {
+      const index = Math.floor(Math.random() * totalSeats);
+      occupied.add(index);
     }
-    setSeats(initialSeats);
-  }, []);
 
-  const handleSeatClick = (groupIndex, seatIndex) => {
-    setSeats((prevSeats) =>
-      prevSeats.map((row, rowIndex) => {
-        if (rowIndex === groupIndex) {
-          return row.map((seat, sIndex) => {
-            if (sIndex === seatIndex) {
-              if (seat === "free") return "selected";
-              if (seat === "selected") return "free";
-            }
-            return seat;
-          });
-        }
-        return row;
-      })
-    );
+    setOccupiedSeats(occupied);
+  }, [totalSeats]);
+
+  const toggleSeat = (index) => {
+    if (occupiedSeats.has(index)) return;
+
+    setSelectedSeats((prev) => {
+      const newSet = new Set(prev);
+      newSet.has(index) ? newSet.delete(index) : newSet.add(index);
+      return newSet;
+    });
   };
 
-  const selectedCount = seats.flat().filter((s) => s === "selected").length;
-  const subtotal = selectedCount * pricePerSeat;
-
-  const handleChangeLayout = () => {
-    console.log("Cancelar clicado");
+  const getSeatClass = (index) => {
+    if (occupiedSeats.has(index)) return "seat seat-occupied";
+    if (selectedSeats.has(index)) return "seat seat-selected";
+    return "seat";
   };
+
+  const subtotal = selectedSeats.size * seatPrice;
 
   return (
-    <div className="homepage-container">
-      <br />
-      <h2>Gerenciamento de assento</h2>
+    <>
+      <div className="homepage-container">
+        <br />
+        <h2>Gerenciamento de assento</h2>
 
-        <div className="driver-space"></div>
-      <div className="bus-container">
-        {seats.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className={`seat-row ${
-              rowIndex === 1 || rowIndex === 3 ? "row-group-bottom" : ""
-            }`}
-          >
-            {row.map((seat, seatIndex) => (
+        <div className="bus-container">
+          <div className="passenger-area">
+            {Array.from({ length: rows }).map((_, rowIndex) => (
               <div
-                key={seatIndex}
-                className={`seat ${
-                  seat === "free"
-                    ? "seat-free"
-                    : seat === "occupied"
-                    ? "seat-occupied"
-                    : "seat-selected"
-                }`}
-                onClick={() =>
-                  seat !== "occupied" && handleSeatClick(rowIndex, seatIndex)
-                }
-              ></div>
+                key={rowIndex}
+                className="seat-row"
+                style={{
+                  marginTop:
+                    rowIndex === 0
+                      ? "0rem"
+                      : rowIndex % 2 === 0
+                      ? "1.25rem"
+                      : "0rem",
+                }}
+              >
+                {Array.from({ length: cols }).map((_, colIndex) => {
+                  const index = rowIndex * cols + colIndex;
+                  return (
+                    <div
+                      key={colIndex}
+                      className={getSeatClass(index)}
+                      onClick={() => toggleSeat(index)}
+                    />
+                  );
+                })}
+              </div>
             ))}
           </div>
-        ))}
-      </div>
-
-      <div className="legend">
-        <div className="legend-item">
-          <div className="seat seat-free small"></div> Livre
         </div>
-        <div className="legend-item">
-          <div className="seat seat-occupied small"></div> Ocupado
+        <div className="bus-info">
+          <div className="bus-info-header">
+            <div className="legend-container">
+              <div className="legend-item">
+                <div className="legend-free" /> Livre
+              </div>
+              <div className="legend-item">
+                <div className="legend-occupied" /> Ocupado
+              </div>
+              <div className="legend-item">
+                <div className="legend-selected" /> Selecionado
+              </div>
+            </div>
+          </div>
+          <div className="counter">
+            <p>
+              Assentos selecionados:
+              <span className="counter-value"> {selectedSeats.size} </span>
+            </p>
+            <p>
+              Preço por assento:
+              <span className="counter-value"> R$ {seatPrice} </span>
+            </p>
+            <p>
+              Subtotal:
+              <span className="counter-value">
+                {selectedSeats.size} x {seatPrice} = R$ {subtotal}
+              </span>
+            </p>
+          </div>
+          <div className="footer-register-buspage">
+            <ButtonCancel onClick={() => window.history.back()}>
+              Cancel
+            </ButtonCancel>
+            <Link to="/PaymentConfirm">
+              <Button>Register</Button>
+            </Link>
+          </div>
         </div>
-        <div className="legend-item">
-          <div className="seat seat-selected small"></div> Selecionado
-        </div>
       </div>
-
-      <div className="summary">
-        <p>
-          Assentos escolhidos:
-          <span> {selectedCount}</span>
-        </p>
-        <p>
-          Preço por assento:
-          <span> R$ {pricePerSeat}</span>
-        </p>
-        <p>
-          Subtotal:
-          <span>
-            {" "}
-            {selectedCount} x {pricePerSeat} = R$ {subtotal}
-          </span>
-        </p>
-      </div>
-
-      <div className="footer-register">
-        <ButtonCancel onClick={handleChangeLayout}>Cancelar</ButtonCancel>
-        <Link to="/">
-          <Button>Registrar</Button>
-        </Link>
-      </div>
-    </div>
+    </>
   );
 }
 
