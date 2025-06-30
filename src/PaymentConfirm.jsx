@@ -7,7 +7,7 @@ function PaymentConfirm() {
       <br />
       <h2>Gerenciamento de assento</h2>
       <div className="payment-card">
-        <img src="../assets/qrcode.png" alt="QR Code" className="qrcode-img" />
+        <img src="/public/qrcode.png" alt="QR Code" className="qrcode-img" />
         <p className="total-value">Total: R$ 300,00</p>
       </div>
       <br />

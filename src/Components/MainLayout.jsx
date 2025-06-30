@@ -13,7 +13,7 @@ const menuItems = [
   { label: "Componentes", path: "/Components" },
 ];
 
-const title = "Meu Site";
+const title = "ConnectBus";
 const username = "Usuário";
 
 const MainLayout = () => {

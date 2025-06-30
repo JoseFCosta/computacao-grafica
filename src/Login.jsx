@@ -29,7 +29,7 @@ export default function Login() {
         </Link>
       </div>
       <div className="right-content">
-        <img src="../assets/bus-image-1.svg" alt="Imagem de viagem" />
+        <img src="/public/bus-image-1.svg" alt="Imagem de viagem" />
         <br />
         <h3>
           Explore novos destinos, conecte pessoas e embarque em novas jornadas.

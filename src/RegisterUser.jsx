@@ -17,7 +17,7 @@ function RegisterUser() {
       {layout ? (
         <div className="container">
           <div className="left-content-register">
-            <img src="../assets/logo-1.svg" alt="Imagem de viagem" />
+            <img src="/public/logo-1.svg" alt="Imagem de viagem" />
             <br />
             <br />
             <br />

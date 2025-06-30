@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 function HomePage() {
   const [inputValue, setInputValue] = useState("");
   const [dropdownValue, setDropdownValue] = useState("");
+  const [departureCity, setDepartureCity] = useState("");
+  const [arrivalCity, setArrivalCity] = useState("");
+  const [departureDate, setDepartureDate] = useState("");
+  const [arrivalDate, setArrivalDate] = useState("");
+
   const navigate = useNavigate();
 
   const trips = [
@@ -57,7 +62,8 @@ function HomePage() {
     {
       id: 6,
       title: "Viagem para Fortaleza",
-      imageUrl:"https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Trevo_Sinop.jpg/640px-Trevo_Sinop.jpg",
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Trevo_Sinop.jpg/640px-Trevo_Sinop.jpg",
       address: "Sinop - MT",
       departureDate: "05/09/2025",
       arrivalDate: "10/09/2025",
@@ -70,7 +76,7 @@ function HomePage() {
       address: "Europa - CBA",
       departureDate: "05/09/2025",
       arrivalDate: "10/09/2025",
-    },  
+    },
     {
       id: 8,
       title: "Viagem para Fortaleza",
@@ -79,20 +85,43 @@ function HomePage() {
       address: "Washington - D.C",
       departureDate: "05/09/2025",
       arrivalDate: "10/09/2025",
-    },  
+    },
   ];
 
   const handleCardClick = (trip) => {
     navigate("/RegisterTravel", { state: trip });
   };
-  
+
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
+  const filteredTrips = trips.filter((trip) => {
+    const matchesDepartureCity =
+      !departureCity || trip.address.includes(departureCity);
+    const matchesArrivalCity =
+      !arrivalCity || trip.address.includes(arrivalCity);
+    const matchesDepartureDate =
+      !departureDate || trip.departureDate === departureDate;
+    const matchesArrivalDate = !arrivalDate || trip.arrivalDate === arrivalDate;
 
-  const handleDropdownChange = (e) => {
-    setDropdownValue(e.target.value);
-  };
+    return (
+      matchesDepartureCity &&
+      matchesArrivalCity &&
+      matchesDepartureDate &&
+      matchesArrivalDate
+    );
+  });
+  const cityOptions = [
+    "Rio de Janeiro - RJ",
+    "São Paulo - SP",
+    "Salvador - BA",
+    "Gotham City - SC",
+    "Fim do mundo - MT",
+    "Sinop - MT",
+    "Europa - CBA",
+    "Washington - D.C",
+  ];
+
   return (
     <div className="homepage-container">
       <br />
@@ -103,25 +132,33 @@ function HomePage() {
       <div className="homepage-filter">
         <InputDropDown
           label="Saindo de..."
-          options={["Option 1", "Option 2", "Option 3"]}
-          placeholder="Select an option"
+          options={cityOptions}
+          placeholder="Selecione uma cidade"
+          onChange={(e) => setDepartureCity(e.target.value)}
         />
 
         <FaArrowRight style={{ color: "#4E664A", fontSize: "1.875rem" }} />
 
         <InputDropDown
           label="Indo para..."
-          options={["Option 1", "Option 2", "Option 3"]}
-          placeholder="Select an option"
+          options={cityOptions}
+          placeholder="Selecione uma cidade"
+          onChange={(e) => setArrivalCity(e.target.value)}
         />
 
         <div className="date-group">
-          <DateInput label="Ida..." />
-          <DateInput label="Volta..." />
+          <DateInput
+            label="Ida..."
+            onChange={(e) => setDepartureDate(e.target.value)}
+          />
+          <DateInput
+            label="Volta..."
+            onChange={(e) => setArrivalDate(e.target.value)}
+          />
         </div>
       </div>
       <div className="card-container">
-        {trips.map((trip) => (
+        {filteredTrips.map((trip) => (
           <Card
             key={trip.id}
             title={trip.title}
